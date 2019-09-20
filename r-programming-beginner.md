@@ -50,7 +50,7 @@ More about R
 * Some R Vocabulary.
 * Some General Stuff and Workspace of R
 * R Objects (Vector, List, Data Frame, Factor, Function)
-* Using R: Student t test
+* Using R: Linear Regression
 
 What is R?
 ========================================================
@@ -102,7 +102,7 @@ Get Help
 * Stack Overflow: http://stackoverflow.com/questions/tagged/r
 * Cross-Validated: the statistics Q&A site http://stats.stackexchange.com/
 * Google!
-* Contact QCL: qcl@cmc.edu
+* Contact QCL: qcl@cmc.edu; we are located underneath the Cube!
 
 What is RStudio?
 ========================================================
@@ -378,93 +378,23 @@ fun
 fun(2,3) # a function call
 ```
 
-Using R for Statistical Tests
-========================================================
-Student t-Tests
-
-* One of the most common tests in statistics
-* Used to determine whether the means of two groups are equal to each other
-* Assumption for the test: both groups are sampled from normal distributions with equal variances.
-* Null hypothesis: The two means are equal.
-
-Using R for Statistical Tests
-========================================================
-Student t-Tests (cont.)
-
-
-```r
-x <- rnorm(10)
-y <- rnorm(10)
-t.test(x,y)
-```
-
-Using R for Statistical Tests (cont.)
-========================================================
-One Sample t Test
-
-We are taught the average (normal) human temperature is 98.6 degrees Fahrenheit.
-Let's test it using the data set from a study:
-Mackowiak, P. A., Wasserman, S. S., and Levine, M. M. (1992). A Critical Appraisal of 98.6 Degrees F, the Upper Limit of the Normal Body Temperature, and Other Legacies of Carl Reinhold August Wunderlich. Journal of the American Medical Association, 268, 1578-1580.
-
-
-Using R for Statistical Tests (cont.)
-========================================================
-One Sample t Test (cont.)
-
-Open the text file from 
-
-```r
-data <- read.table(file="http://scicomp.hmc.edu/data/R/normtemp.txt", header=T)
-names(data)
-attach(data)
-summary(Temp) 
-# Graphical test for normality
-qqnorm(Temp)
-qqline(Temp)
-plot(density(Temp))
-# Non-graphical test for normality
-shapiro.test(Temp) # Shapiro-Wilk normality test
-```
-
-# shapiro.test(runif(100, min = 2, max = 4)) # the lower the p-value, the smaller the chance that the samples are from normal distribution.
-# The sample seems okay to test one sample t test
-
-Using R for Statistical Tests (cont.)
-========================================================
-One Sample t Test (last page)
-
-
-```r
-t.test(Temp, mu=98.6)
-```
-The null-hypothesis of this test is that the population's mean value is 98.6. Thus if the p-value is less than the chosen alpha level (e.g., p < 0.05), then the null hypothesis is rejected. We can now reject the null hypothesis. 
-
-From the sample, we might estimate the mean human body temperature to be 98.25 degrees 
 
 Linear Regression
 ========================================================
-> Regression is a general statistical method to fit a straight line or other model to data. The objective is to find a model for predicting the dependent variable (response) given one or more independent (predictor) variables. (R by Example by Jim Albert, Maria Rizzo)
-
-Simple Linear Regression where there's one predictor variable in the model.
+> Linear regression is used to predict the value of an outcome variable Y based on one or more input predictor variables X. The aim is to establish a linear relationship (a mathematical formula) between the predictor variable(s) and the response variable, so that, we can use this formula to estimate the value of the response Y, when only the predictors (Xs) values are known.
 
 $$
 Y = \beta_0 + \beta_1 X + ε
 $$
-where ε is a random error term.
 
-The linear model describes a straight line relation between the response variable Y and predictor X.
+where $Y$ is the response, $X$ is the predictor, and $ε$ is a random error term.
 
-Linear Regression (cont.)
-========================================================
-In least squares regression the unknown parameters $\beta_0$ and $\beta_1$ are estimated by minimizing the sum of the squared deviations between the observed response $Y$ and the value $\hat Y$ predicted by the model. If these estimates are $b_0$ (intercept) and $b_1$ (slope), the estimated regression line is
+The linear model describes a straight line relationship between the response variable Y and predictor X.
 
-$$
-\hat Y = b_0 + b_1 X 
-$$
 
 Linear Regression (cont.)
 ========================================================
-__Fitting the model__
+__Data and Method__
 
 Consider a set of paired observations of speed and stopping distance of cars. Will there be a linear relation between stopping distance and speed of a car? Let's find out.
 
@@ -476,41 +406,104 @@ First we will create a scatter plot from the cars data. Then we will try fitting
 
 Linear Regression (cont.)
 ========================================================
-__Fitting the model__ (cont.)
+__Graphical Analysis__ 
 
+Let's first visually check the relatioship between two variables, speed and dist.
 
 ```r
-attach(cars) #attach the data
-plot(cars) #construct scatterplot
+# [Q] what kind of plot shows realtionship between two variables?
 ```
 
-The R formula that specifies a simple linear regression model $dist = \beta_1 + \beta_1 speed + ε$ is simply
+Linear Regression (cont.)
+========================================================
+__Graphical Analysis__ 
+
+Let's first visually check the relatioship between two variables, speed and dist.
+
+```r
+plot(x=cars$speed, y=cars$dist) #simple scatterplot
+scatter.smooth(x=cars$speed, y=cars$dist, main="Dist ~ Speed")  # scatterplot with smooth curve
+```
+
+Linear Regression (cont.)
+========================================================
+__Linear Model__ 
+
+The R function for linear regression is lm (i.e., linear model). It takes two arguments: formula and data.
+
+The formula that specifies a simple linear regression model $dist = \beta_1 + \beta_1 speed + ε$ is simply
 
 **dist ∼ speed**
 
 
 ```r
-lm(dist ~ speed)
+lm(dist ~ speed, data=cars)
 ```
 __The function lm displays only the estimated coefficients, but the object returned by lm contains much more information.__
 
 Linear Regression (cont.)
 ========================================================
-__Fitting the model__ (cont..)
+__Fitting the model__ 
 
 Let's save the result:
 
 ```r
-L1 <- lm(dist ~ speed) #save the result
+linearmodel <- lm(dist ~ speed, data=cars) #save the result
+intercept <- linearmodel$coefficients[[1]]
+slope <- linearmodel$coefficients[[2]]
 ```
+
+Let's plot the line:
+
+```r
+plot(cars, main="dist = -17.579 + 3.932 speed", 
+     xlim=c(0, 25), ylim=c(-10,130)) # simple scatter plot
+abline(intercept, slope) # adding a line manually
+```
+
+Linear Regression (cont.)
+========================================================
+__Linear Regression Diagnostic__
+
+We want to know how good this model we just found is. 
+- Is it statistically significant? 
+- How good the model predict the value of response variable w.r.t a new value of the predictor variable. 
+- How can we check?
 
 
 ```r
-plot(cars, main="dist = -17.579 + 3.932 speed", xlim=c(0, 25))
-abline(-17.579, 3.932)
-plot(L1)
-abline(L1) # using the value we saved above.
+# summary of the model statistics
 ```
+
+
+Linear Regression (cont.)
+========================================================
+__Linear Regression Diagnostic__
+
+We want to know how good this model we just found is. 
+- Is it statistically significant? 
+- How good the model predict the value of response variable w.r.t a new value of the predictor variable. 
+- How can we check?
+
+
+```r
+summary(linearmodel) 
+```
+Look at p-Values and r-squared for now. 
+
+Linear Regression (cont.)
+========================================================
+__Linear Regression Diagnostic__
+
+> In Linear Regression, the Null Hypothesis is that the coefficients associated with the variables is equal to zero (no effect). With the p-Value < 0.05, we can reject the null hypothesis. 
+
+> R-squared value tells you that how good the model represent the actual population. It's called a goodness-of-fit measure for linear regression models. This statistic indicates the percentage of the variance in the dependent variable that the independent variables explain collectively.
+  
+Linear Regression (cont.)
+========================================================
+__The most common metrics to check the model's quality__
+
+![Common Metrics](r-programming-beginner-figure/Linear_Regression_With_R.png)
 
 Quiz
 ========================================================
@@ -520,13 +513,6 @@ Quiz
 (4)
 (5)
 
-Quiz
-========================================================
-(6) 
-(7)
-(8)
-(9)
-(10)
 
 That's it! (for now)
 ========================================================
