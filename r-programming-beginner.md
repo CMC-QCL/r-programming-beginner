@@ -1,7 +1,7 @@
 R Programming for Beginners
 ========================================================
 author: Jeho Park
-date: Sep. 19, 2019
+date: Sep. 20, 2019
 transition: none
 autosize: true
 
