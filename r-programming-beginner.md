@@ -1,0 +1,540 @@
+R Programming for Beginners
+========================================================
+author: Jeho Park
+date: Sep. 19, 2019
+transition: none
+autosize: true
+
+## Murty Sunak Quantitative and Computing Lab
+### Workshop Series: Coding - Level 2
+
+
+Some Housekeeping Stuff
+========================================================
+- **Slides** at http://rpubs.com/jepark/math161-r-s2016
+- **Files** at http://bit.ly/hmc-r-lecture-files
+
+
+This workshop is...
+========================================================
+* about R's programming aspects.
+  - Designed to help you start R programming.
+  - Designed to help you recall your memory of R programming.
+* not about Statistics.
+  - Assuming that you already have a basic knowledge of Statistics.
+
+Agenda
+========================================================
+* Introduction to R 
+* Examples 
+* R Objects 
+* Using R:
+  - Normality test/Student t test (skipped)
+  - Linear regression
+  - Finding and installing new packages
+
+Introduction to R
+========================================================
+* What is R?
+* What is not R?
+* Then Why R?
+* Asking questions
+* What is RStudio?
+* Let's run R/RStudio!
+* What Can We Do with RStudio?
+* Look Ma, R can do MATH!
+* Even more Math!
+
+More about R
+========================================================
+* Some R Vocabulary.
+* Some General Stuff and Workspace of R
+* R Objects (Vector, List, Data Frame, Factor, Function)
+* Using R: Student t test
+
+What is R?
+========================================================
+* R is a statical programming language/environment.
+* R is open source/free.
+* R is widely used/prefered.
+* R is cross-platform.
+* R is hard to learn (really?).
+
+What is not R?
+========================================================
+* S: R's ancestor
+* S-Plus: Commercial; modern implementation of S
+* SAS: Commercial; widely used in the commercial analytics.  
+* SPSS: Commercial; easy to use; widely used in Social Science.
+* MATLAB: Commercial; can do some Stats. 
+* Python: Also can do some Stats; good in text data manipulation.
+
+
+Then Why R?
+========================================================
+* __R is a popular statitical tool__
+* R has tons of user generated libraries/packages
+* R code is easily shared with others
+* R is constantly improving
+
+***
+
+![R Google Scholar Hit](r-programming-beginner-figure/Fig_2d_ScholarlyImpact2016.png)
+
+Then Why R?
+========================================================
+After SPSS and SAS:<br>
+![R Google Scholar Hit](r-programming-beginner-figure/Fig_2e_ScholarlyImpactSubset2016.png)
+
+Then Why R?
+========================================================
+* R is a popular statitical tool
+* __R has tons of user generated libraries/packages__
+* R code is easily shared with others
+* R is constantly improved (open source)
+
+***
+
+![R Extentions](r-programming-beginner-figure/r-extensions.png)
+
+Get Help
+========================================================
+* Stack Overflow: http://stackoverflow.com/questions/tagged/r
+* Cross-Validated: the statistics Q&A site http://stats.stackexchange.com/
+* Google!
+* Contact QCL: qcl@cmc.edu
+
+What is RStudio?
+========================================================
+* Integrated Development Environment for R
+* Nice combination of GUI and CLI
+* Free and commercial version
+* 4 main windows, tabs, etc
+* Version control: Git and VPN
+* Debugging 
+* Documentation: R Markdown
+  - install.packages("rmarkdown")
+  - http://rmarkdown.rstudio.com/
+* Presentation slides: R Presentation (this one!)
+
+Check Point 1: Environment Check
+========================================================
+* R
+* RStudio
+
+What Can We Do with RStudio?
+========================================================
+## RStudio Introduction
+<img src="./r-programming-beginner-figure/rstudio_image.png" width="1000">
+
+Look Ma, R can do Math! 
+========================================================
+
+```r
+1+1
+```
+
+
+```r
+2+runif(1,min=0,max=1)
+```
+
+
+```r
+3^2
+```
+
+
+```r
+3*3
+```
+
+
+```r
+sqrt(3*3) # square root function
+```
+
+
+```r
+# comments are preceded by hash sign sqrt(3*3)
+```
+
+Even More Math! 
+========================================================
+* R can take integrals and derivatives, for example:
+
+Numerical Integral of
+
+$\displaystyle\int_0^{\infty} \frac{1}{(x+1)\sqrt{x}}dx$ 
+
+
+```r
+integrand <- function(x) {1/((x+1)*sqrt(x))} ## define the integrated function
+```
+
+```r
+integrate(integrand, lower=0, upper=Inf) ## integrate the function from 0 to infinity
+```
+
+```
+3.141593 with absolute error < 2.7e-05
+```
+
+
+Some R Vocabulary
+========================================================
+* **packages** are add on features to R  include data, new functions and methods, and extended capabilities. Think of them as ``apps'' on your phone. We've already installed several!
+* **console** is the main window of R where you enter commands
+* **workspace** is the working memory of R where all objects are stored
+* **script** is where you store commands to be run in the terminal later, like syntax files in SPSS or .do files in Stata
+* **function** is a set of commands doing something to R object(s) by getting inputs, do work, and return outputs. 
+
+
+Some Gene-R-al Stuff
+========================================================
+
+```r
+demo() # display available demos
+```
+
+```r
+demo(graphics) # try graphics demo
+```
+
+```r
+library() # show available packages on the computer
+```
+
+```r
+search() # show loaded packages
+```
+
+```r
+?hist # search for the usage of hist function
+```
+
+
+```r
+??histogram # search for package documents containing the word "histogram"
+```
+
+Workspace of R
+========================================================
+
+R workspace stores objects like vectors, datasets and functions in memory (the available space for calculation is limited to the size of the RAM).
+
+
+```r
+a <- 5 # notice a in your Environment window
+```
+
+
+```r
+A <- "text" 
+```
+
+
+```r
+a
+A
+ls()
+print(c(a,A))
+print(a,A)
+```
+
+Basic R Objects: Vectors
+========================================================
+Vectors are array objects of the __same type__ data elements.
+
+
+```r
+class(a)
+```
+
+```r
+class(A)
+```
+
+```r
+B <- c(a,A) # concatenation
+```
+
+```r
+print(B)
+```
+
+```r
+class(B) # why?
+```
+
+Basic R Objects: Vectors (cont.)
+========================================================
+R has five basic or “atomic” classes of objects: 
+* character
+* numeric (real numbers) 
+* integer
+* complex
+* logical (True/False)
+
+A vector contains a set of data in any one of the atomic classes.
+
+Basic R Objects: Lists
+========================================================
+List are objects that can store __different types__ of vectors. 
+
+```r
+aList <- list(name=c("Joseph"), married=T, kids=2)
+aList
+aList$kids <- aList$kids+1
+aList$kids
+aList2 <- list(numeric_data=a,character_data=A)
+aList2
+allList <- list(aList, aList2)
+allList
+```
+
+Basic R Objects: Data frames
+========================================================
+### Data frames are used for storing data tables. 
+### It is a __list of vectors of equal length__. 
+
+```r
+n <- c(2, 3, 5) # a vector 
+s <- c("aa", "bb", "cc") # a vector
+b <- c(TRUE, FALSE, TRUE) # a vector
+df <- data.frame(n, s, b) # a data frame
+df
+mtcars # a built-in (attached) data frame
+mtcars$mpg
+```
+
+Basic R Objects: Data frames (cont.)
+========================================================
+### Data frames are used for storing data tables. 
+### It is a __list of vectors of equal length__. 
+
+```r
+df1 <- data.frame(y1=rnorm(100),y2=rnorm(100), y3=rnorm(100))
+head(df1) # display first few lines of data
+names(df1) # display column names
+summary(df1) # output depends on the data types
+plot(df1)
+```
+
+```r
+df2 <- read.table("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/test.txt", 
+                 header = FALSE)
+```
+
+Subsseting
+=========================
+There are three operators used to extract subsets of R objects.
+* [ always returns an object of the same class as the original; can be used to select more than one element.
+* [[ is used to extract elements of a list or a data frame; it can only be used to extract a single element.
+* $ is used to extract elements of a list or data frame by name.
+
+[Q] What happens when [ is applied to a list?
+
+Subsetting (cont.)
+==========================
+
+```r
+x <- c("a", "b", "c", "c", "d", "a")
+x[1]
+x[1:4]
+x[x > "a"] 
+u <- x > "a" # what's u here?
+u
+x[u] # subsetting using a boolean vector
+y <- list(foo=x, bar=x[u])
+y
+y[[1]]
+y[1]
+y$bar
+```
+R Objects: Factor
+========================================================
+* Factors are a special compoud object used to represent __categorical data__ such as gender, social class, etc.
+* Factors have 'levels' attribute. They may be nominal or ordered.
+
+```r
+v <- c("a","b","c","c","b")
+x <- factor(v) # turn the character vector into a factor object
+z <- factor(v, ordered = TRUE) # ordered factor
+x
+z
+table(x)
+```
+
+R Objects: Functions
+=============================
+
+```r
+fun <- function(a,b) {
+  a*b
+}
+
+fun   
+fun(2,3) # a function call
+```
+
+Using R for Statistical Tests
+========================================================
+Student t-Tests
+
+* One of the most common tests in statistics
+* Used to determine whether the means of two groups are equal to each other
+* Assumption for the test: both groups are sampled from normal distributions with equal variances.
+* Null hypothesis: The two means are equal.
+
+Using R for Statistical Tests
+========================================================
+Student t-Tests (cont.)
+
+
+```r
+x <- rnorm(10)
+y <- rnorm(10)
+t.test(x,y)
+```
+
+Using R for Statistical Tests (cont.)
+========================================================
+One Sample t Test
+
+We are taught the average (normal) human temperature is 98.6 degrees Fahrenheit.
+Let's test it using the data set from a study:
+Mackowiak, P. A., Wasserman, S. S., and Levine, M. M. (1992). A Critical Appraisal of 98.6 Degrees F, the Upper Limit of the Normal Body Temperature, and Other Legacies of Carl Reinhold August Wunderlich. Journal of the American Medical Association, 268, 1578-1580.
+
+
+Using R for Statistical Tests (cont.)
+========================================================
+One Sample t Test (cont.)
+
+Open the text file from 
+
+```r
+data <- read.table(file="http://scicomp.hmc.edu/data/R/normtemp.txt", header=T)
+names(data)
+attach(data)
+summary(Temp) 
+# Graphical test for normality
+qqnorm(Temp)
+qqline(Temp)
+plot(density(Temp))
+# Non-graphical test for normality
+shapiro.test(Temp) # Shapiro-Wilk normality test
+```
+
+# shapiro.test(runif(100, min = 2, max = 4)) # the lower the p-value, the smaller the chance that the samples are from normal distribution.
+# The sample seems okay to test one sample t test
+
+Using R for Statistical Tests (cont.)
+========================================================
+One Sample t Test (last page)
+
+
+```r
+t.test(Temp, mu=98.6)
+```
+The null-hypothesis of this test is that the population's mean value is 98.6. Thus if the p-value is less than the chosen alpha level (e.g., p < 0.05), then the null hypothesis is rejected. We can now reject the null hypothesis. 
+
+From the sample, we might estimate the mean human body temperature to be 98.25 degrees 
+
+Linear Regression
+========================================================
+> Regression is a general statistical method to fit a straight line or other model to data. The objective is to find a model for predicting the dependent variable (response) given one or more independent (predictor) variables. (R by Example by Jim Albert, Maria Rizzo)
+
+Simple Linear Regression where there's one predictor variable in the model.
+
+$$
+Y = \beta_0 + \beta_1 X + ε
+$$
+where ε is a random error term.
+
+The linear model describes a straight line relation between the response variable Y and predictor X.
+
+Linear Regression (cont.)
+========================================================
+In least squares regression the unknown parameters $\beta_0$ and $\beta_1$ are estimated by minimizing the sum of the squared deviations between the observed response $Y$ and the value $\hat Y$ predicted by the model. If these estimates are $b_0$ (intercept) and $b_1$ (slope), the estimated regression line is
+
+$$
+\hat Y = b_0 + b_1 X 
+$$
+
+Linear Regression (cont.)
+========================================================
+__Fitting the model__
+
+Consider a set of paired observations of speed and stopping distance of cars. Will there be a linear relation between stopping distance and speed of a car? Let's find out.
+
+We will use "cars" dataset which is already installed.
+
+Try ?cars
+
+First we will create a scatter plot from the cars data. Then we will try fitting the relation using the lm function (fitting linear models) in stats package.
+
+Linear Regression (cont.)
+========================================================
+__Fitting the model__ (cont.)
+
+
+```r
+attach(cars) #attach the data
+plot(cars) #construct scatterplot
+```
+
+The R formula that specifies a simple linear regression model $dist = \beta_1 + \beta_1 speed + ε$ is simply
+
+**dist ∼ speed**
+
+
+```r
+lm(dist ~ speed)
+```
+__The function lm displays only the estimated coefficients, but the object returned by lm contains much more information.__
+
+Linear Regression (cont.)
+========================================================
+__Fitting the model__ (cont..)
+
+Let's save the result:
+
+```r
+L1 <- lm(dist ~ speed) #save the result
+```
+
+
+```r
+plot(cars, main="dist = -17.579 + 3.932 speed", xlim=c(0, 25))
+abline(-17.579, 3.932)
+plot(L1)
+abline(L1) # using the value we saved above.
+```
+
+Quiz
+========================================================
+(1) 
+(2)
+(3)
+(4)
+(5)
+
+Quiz
+========================================================
+(6) 
+(7)
+(8)
+(9)
+(10)
+
+That's it! (for now)
+========================================================
+> Useful links:
+> 
+> - R tutorial sites: http://jaredknowles.com/r-bootcamp/ and http://adv-r.had.co.nz/
+> - R search site: http://rseek.org
+> - R Markdown cheat sheet: http://shiny.rstudio.com/articles/rm-cheatsheet.html
+
+**(Adapted from several publicly available resources such as 1) the R-Bootcamp by Jared Knowles: http://jaredknowles.com/r-bootcamp/, 2) Advanced R by Hadley Wickham: http://adv-r.had.co.nz</small>
+<small>(Slides are made with the R Presentations tool in RStudio)**
