@@ -11,8 +11,8 @@ autosize: true
 
 Some Housekeeping Stuff
 ========================================================
-- **Slides** at http://rpubs.com/jepark/math161-r-s2016
-- **Files** at http://bit.ly/hmc-r-lecture-files
+- **Slides** at http://bit.ly/r-programming-beginner-f2019
+- **Files** at https://github.com/CMC-QCL/r-programming-beginner
 
 
 This workshop is...
@@ -28,10 +28,7 @@ Agenda
 * Introduction to R 
 * Examples 
 * R Objects 
-* Using R:
-  - Normality test/Student t test (skipped)
-  - Linear regression
-  - Finding and installing new packages
+* Using R for statistical analysis: Linear regression
 
 Introduction to R
 ========================================================
@@ -324,6 +321,7 @@ plot(df1)
 ```r
 df2 <- read.table("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/test.txt", 
                  header = FALSE)
+df2
 ```
 
 Subsseting
@@ -504,14 +502,6 @@ Linear Regression (cont.)
 __The most common metrics to check the model's quality__
 
 ![Common Metrics](r-programming-beginner-figure/Linear_Regression_With_R.png)
-
-Quiz
-========================================================
-(1) 
-(2)
-(3)
-(4)
-(5)
 
 
 That's it! (for now)
