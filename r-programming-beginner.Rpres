@@ -11,7 +11,7 @@ autosize: true
 
 Some Housekeeping Stuff
 ========================================================
-- **Slides** at http://bit.ly/r-programming-beginner-f2019
+- **Slides** at http://rpubs.com/jehopark/r-programming-beginner
 - **Files** at https://github.com/CMC-QCL/r-programming-beginner
 
 
