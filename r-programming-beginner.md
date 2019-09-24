@@ -499,8 +499,7 @@ __Linear Regression Diagnostic__
   
 Linear Regression (cont.)
 ========================================================
-__The most common metrics to check the model's quality__
-
+__The most common metrics to check the model's quality__ (http://r-statistics.co/Linear-Regression.html)
 ![Common Metrics](r-programming-beginner-figure/Linear_Regression_With_R.png)
 
 
