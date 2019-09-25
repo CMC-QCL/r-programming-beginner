@@ -23,4 +23,6 @@ _Prerequisite: R and RStudio_
 1. Unzip the downloaded file
 1. Open the folder 
 1. Double-click on the "r-programming-beginner.Rproj" file
+1. (From the RStudio Files tab) click on r-programming-beginner.Pres
+1. Run R commands line by line by (1) click on the line you want to run and then (2) press the Ctrl+Enter key
 
