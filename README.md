@@ -19,7 +19,7 @@ This workshop is designed for beginners in R programming, so no prior knowledge 
 
 ## How to run the R script (R slides) file on your computer
 _Prerequisite: R and RStudio_
-1. Download all the files in this repo in a zip file
+1. Download all the files in this repo in a [zip](https://github.com/CMC-QCL/r-programming-beginner/zipball/master) file
 1. Unzip the downloaded file
 1. Open the folder 
 1. Double-click on the "r-programming-beginner.Rproj" file
