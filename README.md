@@ -14,7 +14,7 @@ If you are planning to bring your own laptop, please make sure that you have the
 ### Agenda
 - Basics of R and RStudio
 - R Programming Environment: Workspace, Working Directory, Packages
-- R Objects: Data types , and function)
+- R Objects: Vector, List, Data frame, and Function
 - R Packages: Installation and usage
 - R Graphics: Simple plotting methods
 - Basic statistical analysis using R: Linear Regression
