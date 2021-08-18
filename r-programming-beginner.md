@@ -1,53 +1,45 @@
 R Programming for Beginners
 ========================================================
 author: Jeho Park
-date: Sep. 20, 2019
+date: April 1, 2020
 transition: none
 autosize: true
 
 ## Murty Sunak Quantitative and Computing Lab
-### Workshop Series: Coding - Level 2
+### Workshop Series: Level 1 - Coding
 
 
 Some Housekeeping Stuff
 ========================================================
-- **Slides** at http://rpubs.com/jehopark/r-programming-beginner
-- **Files** at https://github.com/CMC-QCL/r-programming-beginner
+- **Sign-in** at http://bit.ly/f2019-4-r-2
+- **Slides** at http://bit.ly/r-programming-beginner-3
+- **Files** at http://bit.ly/r-programming-beginner-files
 
 
 This workshop is...
 ========================================================
-* about R's programming aspects.
-  - Designed to help you start R programming.
-  - Designed to help you recall your memory of R programming.
-* not about Statistics.
-  - Assuming that you already have a basic knowledge of Statistics.
+* This R Workshop for Beginner is
+  - designed to help you start R programming.
+  - designed to help you recall your memory of R programming.
+  - for those who already have a basic knowledge of Statistics.
 
 Agenda
 ========================================================
-* Introduction to R 
+* Getting Started with R and RStudio
 * Examples 
-* R Objects 
 * Using R for statistical analysis: Linear regression
+* R packages for data science
 
-Introduction to R
+Getting Started with R and RStudio
 ========================================================
-* What is R?
-* What is not R?
-* Then Why R?
-* Asking questions
-* What is RStudio?
-* Let's run R/RStudio!
-* What Can We Do with RStudio?
-* Look Ma, R can do MATH!
-* Even more Math!
+A Quick Start Guide for R Beginners
 
-More about R
-========================================================
-* Some R Vocabulary.
-* Some General Stuff and Workspace of R
-* R Objects (Vector, List, Data Frame, Factor, Function)
-* Using R: Linear Regression
+In this section, you will be guided to some very basic information about R and RStudio
+
+I will then check your R/RStudio environment.
+
+Befor we go on, let's check your familiarity with R.
+
 
 What is R?
 ========================================================
@@ -55,7 +47,7 @@ What is R?
 * R is open source/free.
 * R is widely used/prefered.
 * R is cross-platform.
-* R is hard to learn (really?).
+* R is hard to learn.
 
 What is not R?
 ========================================================
@@ -66,35 +58,7 @@ What is not R?
 * MATLAB: Commercial; can do some Stats. 
 * Python: Also can do some Stats; good in text data manipulation.
 
-
-Then Why R?
-========================================================
-* __R is a popular statitical tool__
-* R has tons of user generated libraries/packages
-* R code is easily shared with others
-* R is constantly improving
-
-***
-
-![R Google Scholar Hit](r-programming-beginner-figure/Fig_2d_ScholarlyImpact2016.png)
-
-Then Why R?
-========================================================
-After SPSS and SAS:<br>
-![R Google Scholar Hit](r-programming-beginner-figure/Fig_2e_ScholarlyImpactSubset2016.png)
-
-Then Why R?
-========================================================
-* R is a popular statitical tool
-* __R has tons of user generated libraries/packages__
-* R code is easily shared with others
-* R is constantly improved (open source)
-
-***
-
-![R Extentions](r-programming-beginner-figure/r-extensions.png)
-
-Get Help
+How to Get Help
 ========================================================
 * Stack Overflow: http://stackoverflow.com/questions/tagged/r
 * Cross-Validated: the statistics Q&A site http://stats.stackexchange.com/
